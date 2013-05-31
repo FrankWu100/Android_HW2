@@ -33,7 +33,7 @@ public class BigLottery extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO ¦Û°Ê²£¥Íªº¤èªk Stub
+		// TODO è‡ªå‹•ç”¢ç”Ÿçš„æ–¹æ³• Stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.biglottery);
 		
@@ -52,8 +52,8 @@ public class BigLottery extends Activity {
         			ansTable.setText("");
         			
         			runtimeSize = Integer.parseInt(txt1.getText().toString());
-        			titleString = addSpace("²Õ", Integer.toString(runtimeSize).length()-2)
-        						+ "\t\t¤j¼Ö³z  ¸¹½X";
+        			titleString = addSpace("çµ„", Integer.toString(runtimeSize).length()-2)
+        						+ "\t\tå¤§æ¨‚é€  è™Ÿç¢¼";
         			
         			InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         			imm.hideSoftInputFromWindow(txt1.getWindowToken(), 0);   
@@ -71,23 +71,23 @@ public class BigLottery extends Activity {
         	}
         });
 	}
-	//³]©w¿ï³æ«Ø¥ß
+	//è¨­å®šé¸å–®å»ºç«‹
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
     	
-    	menu.add(0, 0, 0, "±²°Ê¦Ü³»");
-    	menu.add(0, 1, 1, "±²°Ê¦Ü©³");
-    	//menu.add(0, 2, 2, "°±¤î¹Bºâ");
+    	menu.add(0, 0, 0, "æ²å‹•è‡³é ‚");
+    	menu.add(0, 1, 1, "æ²å‹•è‡³åº•");
+    	//menu.add(0, 2, 2, "åœæ­¢é‹ç®—");
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    //³]©w¿ï³æ°Ê§@
+    //è¨­å®šé¸å–®å‹•ä½œ
     
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //¨Ì¾ÚitemId¨Ó§PÂ_¨Ï¥ÎªÌÂI¿ï­ş¤@­Óitem
+        //ä¾æ“šitemIdä¾†åˆ¤æ–·ä½¿ç”¨è€…é»é¸å“ªä¸€å€‹item
     	ScrollView scrollTable = (ScrollView) findViewById(R.id.scrollView1);
     	switch(item.getItemId()) {
             case 0:
@@ -106,23 +106,23 @@ public class BigLottery extends Activity {
     	AlertDialog.Builder infoMsg = new AlertDialog.Builder(BigLottery.this);
     	switch(item.getOrder()) {
     		case 100:
-    			infoMsg.setTitle("Ãö©ó");
-    			infoMsg.setMessage("ª©¥»¡G2.0\n§@ªÌ¡G§d®aº~\n¥\¯à¡G\n\t1.´£¨Ñ¤j¼Ö³z»P«Â¤O±m¶Ã¼Æµ²ªG²£¥Í¥\¯à\n\t2.§ïµ½¹Bºâ®ÄªG»P¥\¯à\n\t3.¼W³]¥iÀH®É¤¤Â_¹Bºâ\n\t4.§ó§ï¤¶­±¨Ï¤¶­±·P¨ì§ó¤Íµ½");
+    			infoMsg.setTitle("é—œæ–¼");
+    			infoMsg.setMessage("ç‰ˆæœ¬ï¼š2.0\nä½œè€…ï¼šå³å®¶æ¼¢\nåŠŸèƒ½ï¼š\n\t1.æä¾›å¤§æ¨‚é€èˆ‡å¨åŠ›å½©äº‚æ•¸çµæœç”¢ç”ŸåŠŸèƒ½\n\t2.æ”¹å–„é‹ç®—æ•ˆæœèˆ‡åŠŸèƒ½\n\t3.å¢è¨­å¯éš¨æ™‚ä¸­æ–·é‹ç®—\n\t4.æ›´æ”¹ä»‹é¢ä½¿ä»‹é¢æ„Ÿåˆ°æ›´å‹å–„");
     			infoMsg.setCancelable(false);
-    			infoMsg.setPositiveButton("½T©w", null);
+    			infoMsg.setPositiveButton("ç¢ºå®š", null);
     			infoMsg.show();
     			break;
     		case 200:
-    			infoMsg.setTitle("Ãö³¬ App");
-    			infoMsg.setMessage("±z½T©w­nÃö³¬À³¥Îµ{¦¡¶Ü?");
+    			infoMsg.setTitle("é—œé–‰ App");
+    			infoMsg.setMessage("æ‚¨ç¢ºå®šè¦é—œé–‰æ‡‰ç”¨ç¨‹å¼å—?");
     			infoMsg.setCancelable(false);
-    			infoMsg.setPositiveButton("½T©w", new OnClickListener() {
+    			infoMsg.setPositiveButton("ç¢ºå®š", new OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 		    			finish();
 					}
 				});
-    			infoMsg.setNegativeButton("¨ú®ø", null);
+    			infoMsg.setNegativeButton("å–æ¶ˆ", null);
     			infoMsg.show();
     			break;
     		default:
@@ -153,15 +153,15 @@ public class BigLottery extends Activity {
 	    {
 	    	mypDialog = new ProgressDialog(BigLottery.this);
 			mypDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-			mypDialog.setTitle("­pºâ¤¤");
+			mypDialog.setTitle("è¨ˆç®—ä¸­");
 			mypDialog.setMessage("Loading...");
 			mypDialog.setMax(runtimeSize);
 			mypDialog.setIndeterminate(false);
 			mypDialog.setCancelable(false);
-			mypDialog.setButton(DialogInterface.BUTTON_POSITIVE, "¤¤Â_", new DialogInterface.OnClickListener() {
+			mypDialog.setButton(DialogInterface.BUTTON_POSITIVE, "ä¸­æ–·", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO ¦Û°Ê²£¥Íªº¤èªk Stub
+					// TODO è‡ªå‹•ç”¢ç”Ÿçš„æ–¹æ³• Stub
 	    			threadShouldContinue = false;
 	    			setControlEnabled(true);
 				}
@@ -185,7 +185,7 @@ public class BigLottery extends Activity {
 			return ans;
 	    }    
 		
-	    //ÀË¬d¬O§_­«½Æ
+	    //æª¢æŸ¥æ˜¯å¦é‡è¤‡
 		protected boolean check(int[] array, int size, int num)
 		{
 			for (int i = 0; i < size; ++i)
@@ -196,7 +196,7 @@ public class BigLottery extends Activity {
 			return true;
 		}
 		
-		//±Æ¦C¬üÆ[¥Î­×¥¿
+		//æ’åˆ—ç¾è§€ç”¨ä¿®æ­£
 
 		String addSpace(String str, int size)
 	    {
@@ -214,7 +214,7 @@ public class BigLottery extends Activity {
 	    }
 		
 		
-		//¨ú½ln²Õ¤§¼Æ¦r
+		//å–ç· nçµ„ä¹‹æ•¸å­—
 		protected String getAnsNo(int no, int size)
 		{
 			String merger = new String();
@@ -230,7 +230,7 @@ public class BigLottery extends Activity {
 		}
 		
 		
-		//¾ã¦X¨Ã±Æ§Ç²£¥Í¤§¶Ã¼Æ°}¦C
+		//æ•´åˆä¸¦æ’åºç”¢ç”Ÿä¹‹äº‚æ•¸é™£åˆ—
 		protected String getMergeAns(int[] ans)
 		{
 			String merger = new String();
@@ -247,7 +247,7 @@ public class BigLottery extends Activity {
 		}
 
 		
-		//°õ¦æ§Ç©Ò»İ¤§Handler1, ¿é¥Xµ²ªG
+		//åŸ·è¡Œåºæ‰€éœ€ä¹‹Handler1, è¼¸å‡ºçµæœ
 		@SuppressLint("HandlerLeak")
 		private Handler setAnsTable = new Handler() {
 			public void handleMessage(Message msg) {
@@ -262,7 +262,7 @@ public class BigLottery extends Activity {
 			}
 		};
 		
-		//°õ¦æ§Ç©Ò»İ¤§Handler2, ¿é¥X°õ¦æ¶i«×»P¼ĞÃD
+		//åŸ·è¡Œåºæ‰€éœ€ä¹‹Handler2, è¼¸å‡ºåŸ·è¡Œé€²åº¦èˆ‡æ¨™é¡Œ
 		@SuppressLint("HandlerLeak")
 		private Handler setTitleText = new Handler() {
 			public void handleMessage(Message msg) {
@@ -271,7 +271,7 @@ public class BigLottery extends Activity {
 				if (temp == -99)
 				{
 					String oldText = titleText.getText().toString();
-					titleText.setText(oldText + "\t\t¨Ï¥ÎªÌ¤¤Â_¤F¹Bºâ");
+					titleText.setText(oldText + "\t\tä½¿ç”¨è€…ä¸­æ–·äº†é‹ç®—");
 				}
 				else
 				{
@@ -284,7 +284,7 @@ public class BigLottery extends Activity {
 			}
 		};
 		
-		//·s¤j¼Ö³zFunction °õ¦æ§Ç
+		//æ–°å¤§æ¨‚é€Function åŸ·è¡Œåº
 		class getBigLottery extends Thread {
 			public getBigLottery () {
 				threadShouldContinue = true;
@@ -322,7 +322,7 @@ public class BigLottery extends Activity {
 		                countBundle.putInt(null, -99);
 		                msg.setData(countBundle);
 		                setTitleText.sendMessage(msg);
-		                tableString = tableString + "------¤¤Â_------";
+		                tableString = tableString + "------ä¸­æ–·------";
 					}
 					countBundle = new Bundle();
 	                msg = new Message();
