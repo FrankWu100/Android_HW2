@@ -13,10 +13,16 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class Calculator extends Activity {
+	TextView theText;
 	TextView tempText;
-	TextView ansText;
-	String titleString;
+	String tempString;
+	double tempAns;
+	String ansString = "";
 	Boolean haveDat = false;
+	char calculationType;
+	Boolean haveCalculationType = false;
+	Boolean needCleanTheText = false;
+	Boolean needCleanaAll = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,78 +30,78 @@ public class Calculator extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.calculator);
 
-		tempText = (TextView) findViewById(R.calculatorId.textView1);
-		ansText = (TextView) findViewById(R.calculatorId.textView2);
+		theText = (TextView) findViewById(R.calculatorId.textView1);
+		tempText = (TextView) findViewById(R.calculatorId.textView2);
+		theText.setText("");
 		tempText.setText("");
-		ansText.setText("");
 		
 		Button btn1 = (Button)findViewById(R.calculatorId.button1);
         btn1.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        		tempText.setText(tempText.getText().toString() +"1");
+        		keyNumToTheText(1);
         	}
         });
         
         Button btn2 = (Button)findViewById(R.calculatorId.button2);
         btn2.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        		tempText.setText(tempText.getText().toString() +"2");
+        		keyNumToTheText(2);
         	}
         });
         
         Button btn3 = (Button)findViewById(R.calculatorId.button3);
         btn3.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        		tempText.setText(tempText.getText().toString() +"3");	
+        		keyNumToTheText(3);
         	}
         });
         
         Button btn4 = (Button)findViewById(R.calculatorId.button4);
         btn4.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        		tempText.setText(tempText.getText().toString() +"4");
+        		keyNumToTheText(4);
         	}
         });
         
         Button btn5 = (Button)findViewById(R.calculatorId.button5);
         btn5.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        		tempText.setText(tempText.getText().toString() +"5");
+        		keyNumToTheText(5);
         	}
         });
         
         Button btn6 = (Button)findViewById(R.calculatorId.button6);
         btn6.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        		tempText.setText(tempText.getText().toString() +"6");
+        		keyNumToTheText(6);
         	}
         });
         
         Button btn7 = (Button)findViewById(R.calculatorId.button7);
         btn7.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        		tempText.setText(tempText.getText().toString() +"7");
+        		keyNumToTheText(7);
         	}
         });
         
         Button btn8 = (Button)findViewById(R.calculatorId.button8);
         btn8.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        		tempText.setText(tempText.getText().toString() +"8");
+        		keyNumToTheText(8);
         	}
         });
         
         Button btn9 = (Button)findViewById(R.calculatorId.button9);
         btn9.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        		tempText.setText(tempText.getText().toString() +"9");
+        		keyNumToTheText(9);
         	}
         });
         
         Button btn10 = (Button)findViewById(R.calculatorId.button10);
         btn10.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        		tempText.setText(tempText.getText().toString() +"0");
+        		keyNumToTheText(0);
         	}
         });
         
@@ -105,7 +111,7 @@ public class Calculator extends Activity {
         		if (!haveDat)
         		{
         			haveDat = true;
-        			tempText.setText(tempText.getText().toString() +".");
+        			theText.setText(theText.getText().toString() +".");
         		}
         	}
         });
@@ -113,23 +119,21 @@ public class Calculator extends Activity {
         Button btn12 = (Button)findViewById(R.calculatorId.button12);
         btn12.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        				
-        		
+        		showTempText('÷');
         	}
         });
         
         Button btn13 = (Button)findViewById(R.calculatorId.button13);
         btn13.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        				
-        		
+        		showTempText('×');
         	}
         });
         
         Button btn14 = (Button)findViewById(R.calculatorId.button14);
         btn14.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        				
+        		showTempText('-');
         		
         	}
         });
@@ -137,39 +141,138 @@ public class Calculator extends Activity {
         Button btn15 = (Button)findViewById(R.calculatorId.button15);
         btn15.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        				
-        		
+        		showTempText('+');
         	}
         });
 
         Button btn16 = (Button)findViewById(R.calculatorId.button16);
         btn16.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        		String temp = tempText.getText().toString();
+        		cleenRole();
+        		String temp = theText.getText().toString();
         		if (temp.length() > 0)
-        			tempText.setText(temp.substring(0, temp.length()-1));
+        			theText.setText(temp.substring(0, temp.length()-1));
         	}
         });
 
         Button btn17 = (Button)findViewById(R.calculatorId.button17);
         btn17.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        		tempText.setText("");
-        		ansText.setText("");
-    			haveDat = false;
+        		needCleanaAll = true;
+        		cleenRole();
         	}
         });
 
         Button btn18 = (Button)findViewById(R.calculatorId.button18);
         btn18.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
-        				
-        		
+        		showTempText('=');
+
+        		needCleanaAll = true;
         	}
         });
         
         
 	}
+	
+	private void cleenRole()
+	{
+		if(needCleanTheText)
+		{
+			theText.setText("");
+			needCleanTheText = false;
+		}
+		if(needCleanaAll)
+		{
+			theText.setText("");
+    		tempText.setText("");
+    		tempString = "";
+			haveDat = false;
+			tempAns = 0;
+			ansString = "";
+			haveCalculationType = false;
+			needCleanTheText = false;
+			needCleanaAll = false;
+		}
+
+	}
+	
+	private void keyNumToTheText(int theNum)
+	{
+		cleenRole();
+		theText.setText(theText.getText().toString() + Integer.toString(theNum));
+	}
+	
+	
+	private void showTempText(char theType)
+	{
+		if(needCleanTheText)
+		{
+			theText.setText("");
+			needCleanTheText = false;
+		}
+		
+		if (theText.getText().length() > 0 && tempText.getText().length() > 0)
+		{
+			ansString = ansString + tempString + " " + calculationType + " ";
+			double num1 = tempAns;
+			double num2 = Double.parseDouble(theText.getText().toString());
+			double tempNum;
+			switch(calculationType) {
+			case '÷':
+				if (num2 > 0)
+				{
+					
+					tempNum = num1/num2;
+					theText.setText(Double.toString(tempNum));
+					tempAns = tempNum;
+				}
+				else
+				{
+					theText.setText("ERROR.");
+				}
+		        break;
+		    case '×':
+				tempNum = num1*num2;
+				theText.setText(Double.toString(tempNum));
+				tempAns = tempNum;
+		        break;
+		    case '-':
+				tempNum = num1-num2;
+				theText.setText(Double.toString(tempNum));
+				tempAns = tempNum;
+		    	break;
+		    case '+':
+				tempNum = num1+num2;
+				theText.setText(Double.toString(tempNum));
+				tempAns = tempNum;
+		        break;
+			}
+
+			//ansString = ansString + " " + Integer.toString(num2) + " " + calculationType + " " + theText.getText().toString();
+
+			calculationType = theType;
+			tempString = Double.toString(num2);
+			haveCalculationType = true;
+			needCleanTheText = true;
+			haveDat = false;
+			tempText.setText(ansString + tempString + " " + calculationType);
+		}
+		else
+		{
+			calculationType = theType;
+			if (!haveCalculationType)
+			{
+				tempString = theText.getText().toString();
+				tempAns = Double.parseDouble(tempString);
+			}
+			haveCalculationType = true;
+			theText.setText("");
+			haveDat = false;
+			tempText.setText(ansString + tempString + " " + calculationType);
+		}
+	}
+	
 	//設定選單建立
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
