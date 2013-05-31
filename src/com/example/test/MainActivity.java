@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 		
-        //Button1 ÂIÀ»°Ê§@
+        //Button1 é»æ“Šå‹•ä½œ
         Button btn1 = (Button)findViewById(R.id.button1);
         btn1.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
         	}
         });
         
-        //Button2 ÂIÀ»°Ê§@
+        //Button2 é»æ“Šå‹•ä½œ
         Button btn2 = (Button)findViewById(R.id.button2);
         btn2.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
         	}
         });
 
-        //Button3 ÂIÀ»°Ê§@
+        //Button3 é»æ“Šå‹•ä½œ
         Button btn3 = (Button)findViewById(R.id.button3);
         btn3.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
         	}
         });
         
-      //Button4 ÂIÀ»°Ê§@
+      //Button4 é»æ“Šå‹•ä½œ
         Button btn4 = (Button)findViewById(R.id.button4);
         btn4.setOnClickListener(new Button.OnClickListener(){
         	public void onClick(View v) {
@@ -67,22 +67,22 @@ public class MainActivity extends Activity {
         });
     }
 	
-	//³]©w¿ï³æ«Ø¥ß
+	//è¨­å®šé¸å–®å»ºç«‹
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
     	
-    	menu.add(0, 0, 0, "±²°Ê¦Ü³»");
-    	menu.add(0, 1, 1, "±²°Ê¦Ü©³");
+    	menu.add(0, 0, 0, "æ²å‹•è‡³é ‚");
+    	menu.add(0, 1, 1, "æ²å‹•è‡³åº•");
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    //³]©w¿ï³æ°Ê§@
+    //è¨­å®šé¸å–®å‹•ä½œ
     
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //¨Ì¾ÚitemId¨Ó§PÂ_¨Ï¥ÎªÌÂI¿ï­ş¤@­Óitem
+        //ä¾æ“šitemIdä¾†åˆ¤æ–·ä½¿ç”¨è€…é»é¸å“ªä¸€å€‹item
     	ScrollView scrollTable = (ScrollView) findViewById(R.id.scrollView1);
     	switch(item.getItemId()) {
             case 0:
@@ -97,23 +97,23 @@ public class MainActivity extends Activity {
     	AlertDialog.Builder infoMsg = new AlertDialog.Builder(MainActivity.this);
     	switch(item.getOrder()) {
     		case 100:
-    			infoMsg.setTitle("Ãö©ó");
-    			infoMsg.setMessage("ª©¥»¡G2.0\n§@ªÌ¡G§d®aº~\n¥\¯à¡G\n\t1.´£¨Ñ¤j¼Ö³z»P«Â¤O±m¶Ã¼Æµ²ªG²£¥Í¥\¯à\n\t2.§ïµ½¹Bºâ®ÄªG»P¥\¯à\n\t3.¼W³]¥iÀH®É¤¤Â_¹Bºâ\n\t4.§ó§ï¤¶­±¨Ï¤¶­±·P¨ì§ó¤Íµ½");
+    			infoMsg.setTitle("é—œæ–¼");
+    			infoMsg.setMessage("ç‰ˆæœ¬ï¼š2.0\nä½œè€…ï¼šå³å®¶æ¼¢\nåŠŸèƒ½ï¼š\n\t1.æä¾›å¤§æ¨‚é€èˆ‡å¨åŠ›å½©äº‚æ•¸çµæœç”¢ç”ŸåŠŸèƒ½\n\t2.æ”¹å–„é‹ç®—æ•ˆæœèˆ‡åŠŸèƒ½\n\t3.å¢è¨­å¯éš¨æ™‚ä¸­æ–·é‹ç®—\n\t4.æ›´æ”¹ä»‹é¢ä½¿ä»‹é¢æ„Ÿåˆ°æ›´å‹å–„");
     			infoMsg.setCancelable(false);
-    			infoMsg.setPositiveButton("½T©w", null);
+    			infoMsg.setPositiveButton("ç¢ºå®š", null);
     			infoMsg.show();
     			break;
     		case 200:
-    			infoMsg.setTitle("Ãö³¬ App");
-    			infoMsg.setMessage("±z½T©w­nÃö³¬À³¥Îµ{¦¡¶Ü?");
+    			infoMsg.setTitle("é—œé–‰ App");
+    			infoMsg.setMessage("æ‚¨ç¢ºå®šè¦é—œé–‰æ‡‰ç”¨ç¨‹å¼å—?");
     			infoMsg.setCancelable(false);
-    			infoMsg.setPositiveButton("½T©w", new OnClickListener() {
+    			infoMsg.setPositiveButton("ç¢ºå®š", new OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 		    			finish();
 					}
 				});
-    			infoMsg.setNegativeButton("¨ú®ø", null);
+    			infoMsg.setNegativeButton("å–æ¶ˆ", null);
     			infoMsg.show();
     			break;
     		default:
