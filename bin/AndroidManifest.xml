@@ -27,7 +27,7 @@
         <activity android:name="com.example.test.BigLottery" android:label='大樂透'></activity>
         <activity android:name="com.example.test.SuperLottery" android:label="威力彩"></activity>
         <activity android:name="com.example.test.DailyCash" android:label="今彩539"></activity>
-        <activity android:name="com.example.test.Calculator"></activity>
+        <activity android:name="com.example.test.Calculator" android:label="計算機"></activity>
     </application>
 
 </manifest>
