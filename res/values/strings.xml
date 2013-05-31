@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">大樂透&amp;威力彩</string>
+    <string name="action_settings">關於 此程式</string>
+    <string name="hello_world">Hello Word!</string>
+    <string name="action_closeApp">結束 App</string>
+
+</resources>
